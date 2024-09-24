@@ -27,13 +27,13 @@ function Update-ADUserAttributes {
 
     # Display the inputted information
     Write-Host "Current Username: $currentUsername"
-    Write-Host "Given Name: $newGivenName"
-    Write-Host "Surname: $newSurname"
+    Write-Host "First Name: $newGivenName"
+    Write-Host "Last Name: $newSurname"
     Write-Host "Display Name: $newDisplayName"
     Write-Host "Email Address: $newEmail"
-    Write-Host "New sAMAccountName: $newSamAccountName"
-    Write-Host "New UserPrincipalName: $newEmail"
-    Write-Host "New Proxy Address: smtp:$newEmail"
+    Write-Host "sAMAccountName: $newSamAccountName"
+    Write-Host "UserPrincipalName: $newEmail"
+    Write-Host "Proxy Address: smtp:$newEmail"
 
     # Confirm the information
     $confirmation = Read-Host "Is this information correct? (yes/no)"
@@ -51,7 +51,7 @@ function Update-ADUserAttributes {
                 Write-Host "User's attributes have been updated successfully." -Verbose:$Verbose -Debug:$Debug
 
                 # Optional: Log the changes
-                $logMessage = "Updated user $currentUsername to $newSamAccountName with new attributes: GivenName=$newGivenName, Surname=$newSurname, DisplayName=$newDisplayName, Email=$newEmail"
+                $logMessage = "Updated username from $currentUsername to $newSamAccountName with new attributes: GivenName=$newGivenName, Surname=$newSurname, DisplayName=$newDisplayName, Email=$newEmail"
                 Add-Content -Path "C:\Logs\ADUserUpdates.log" -Value $logMessage
 
             } catch {
@@ -71,8 +71,8 @@ function Update-ADUserAttributes {
 $currentUsername = Read-Host "Enter the current username"
 
 # Prompt for the new attributes
-$newGivenName = Read-Host "Enter the new given name"
-$newSurname = Read-Host "Enter the new surname"
+$newGivenName = Read-Host "Enter the user's first name"
+$newSurname = Read-Host "Enter the user's last name"
 $newEmail = Read-Host "Enter the new email address (this will also be used for UserPrincipalName and ProxyAddress)"
 $newSamAccountName = Read-Host "Enter the new sAMAccountName"
 

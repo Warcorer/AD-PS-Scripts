@@ -30,7 +30,7 @@ function Rename-ADUser {
                 Write-Host "User has been renamed successfully." -Verbose:$Verbose -Debug:$Debug
 
                 # Optional: Log the changes
-                $logMessage = "Renamed user $currentUsername to $newUsername"
+                $logMessage = "Renamed user from $currentUsername to $newUsername"
                 Add-Content -Path "C:\Logs\ADUserRenames.log" -Value $logMessage
 
             } catch {
